@@ -1,0 +1,86 @@
+:root {
+  --bg: #100804;
+  --text: #F8F8F0;
+  --gold: #EBCB85;
+  --muted: #868172;
+  --border: rgba(134, 129, 114, 0.08);
+  --btn-bg: rgba(235, 203, 133, 0.08);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+::selection { background: rgba(235, 203, 133, 0.18); color: var(--text); }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+a { color: inherit; text-decoration: none; }
+
+section {
+  padding: 110px 48px;
+  border-top: 1px solid rgba(134, 129, 114, 0.08);
+}
+
+/* ── Hero entrance animations ── */
+@keyframes fup {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes sup {
+  from { transform: translateY(105%); }
+  to   { transform: translateY(0); }
+}
+
+/* ── Scroll-hint scanning line ── */
+@keyframes scan {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ── Nav badge dot ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+/* ── Journey icon entrance ── */
+@keyframes iconwake {
+  0%   { transform: scale(0.7) rotate(-8deg); opacity: 0.45; color: rgba(134,129,114,0.5); }
+  26%  { transform: scale(1.25) rotate(6deg);  opacity: 1;    color: #EBCB85; }
+  40%  { transform: scale(0.96) rotate(0deg); }
+  56%  { transform: scale(1.13); }
+  70%  { transform: scale(0.99); }
+  85%  { transform: scale(1.08); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; color: #EBCB85; }
+}
+
+/* ── Camera shutter click ── */
+@keyframes shutterclick {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(0.78); }
+  100% { transform: scale(1); }
+}
+
+/* ── Philosophy / Work reveal ── */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 72px 24px; }
+  nav { padding: 16px 20px !important; }
+}
