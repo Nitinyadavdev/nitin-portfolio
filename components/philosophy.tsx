@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState  } from 'react'
 
 function useReveal(delay = 0) {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,6 +37,17 @@ const stats = [
 export default function Philosophy() {
   const textRef  = useReveal(0)
   const statsRef = useReveal(150)
+  const [mobile, setMobile] = useState(false)
+
+useEffect(() => {
+  const check = () => setMobile(window.innerWidth < 768)
+
+  check()
+
+  window.addEventListener('resize', check)
+
+  return () => window.removeEventListener('resize', check)
+}, [])
 
   return (
     <section style={{ position: 'relative', zIndex: 2 }}>
@@ -59,7 +70,7 @@ export default function Philosophy() {
         {/* Two-column grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
           gap: 72,
           alignItems: 'center',
         }}>
@@ -75,7 +86,9 @@ export default function Philosophy() {
           >
             <h2 style={{
               fontFamily: 'Georgia, "Palatino Linotype", serif',
-              fontSize: 'clamp(26px, 3.8vw, 46px)',
+              fontSize: mobile
+  ? 'clamp(22px, 7vw, 34px)'
+  : 'clamp(26px, 3.8vw, 46px)',
               fontWeight: 400,
               lineHeight: 1.2,
               marginBottom: 20,
@@ -87,7 +100,7 @@ export default function Philosophy() {
               </em>
             </h2>
             <p style={{
-              fontSize: 15,
+              fontSize: mobile ? 14 : 15,
               color: '#868172',
               lineHeight: 1.85,
             }}>
@@ -104,7 +117,7 @@ export default function Philosophy() {
             ref={statsRef}
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns:'1fr 1fr',
               gap: 28,
               opacity: 0,
               transform: 'translateY(20px)',
@@ -115,7 +128,7 @@ export default function Philosophy() {
               <div key={s.n}>
                 <div style={{
                   fontFamily: 'Georgia, "Palatino Linotype", serif',
-                  fontSize: 40,
+                  fontSize: mobile ? 32 : 40,
                   color: '#EBCB85',
                   marginBottom: 5,
                 }}>

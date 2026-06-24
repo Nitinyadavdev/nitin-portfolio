@@ -81,6 +81,11 @@ section {
 }
 
 @media (max-width: 768px) {
-  section { padding: 72px 24px; }
-  nav { padding: 16px 20px !important; }
+  section {
+    padding: 90px 20px 60px;
+  }
+
+  nav {
+    padding: 16px 20px !important;
+  }
 }

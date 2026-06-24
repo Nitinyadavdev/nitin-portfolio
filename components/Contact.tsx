@@ -56,10 +56,10 @@ export default function Contact() {
           {/* CTA headline */}
           <h2 style={{
             fontFamily: 'Georgia, "Palatino Linotype", serif',
-            fontSize: 'clamp(28px, 4vw, 52px)',
+            fontSize: 'clamp(26px, 4vw, 52px)',
             fontWeight: 400,
-            maxWidth: 680,
-            lineHeight: 1.18,
+            maxWidth: 760,
+            lineHeight: 1.22,
             marginBottom: 36,
             color: '#F8F8F0',
           }}>

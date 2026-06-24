@@ -1,10 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect  } from 'react'
 
 export default function Hero() {
   const [flashing, setFlashing] = useState(false)
   const [shutterActive, setShutterActive] = useState(false)
+  const [mobile, setMobile] = useState(false)
+
+useEffect(() => {
+  const check = () => setMobile(window.innerWidth < 768)
+
+  check()
+
+  window.addEventListener('resize', check)
+
+  return () => window.removeEventListener('resize', check)
+}, [])
 
   const handleCamera = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -27,7 +38,9 @@ export default function Hero() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '120px 48px 80px',
+        padding: mobile
+  ? '150px 20px 110px'
+  : '120px 48px 80px',
         position: 'relative',
         zIndex: 2,
         border: 'none',
@@ -43,30 +56,48 @@ export default function Hero() {
         transition: flashing ? 'opacity 0.04s ease' : 'opacity 0.5s ease-out',
       }} />
 
-      <div style={{ maxWidth: 980, margin: '0 auto', width: '100%', position: 'relative', zIndex: 2 }}>
+   <div
+  style={{
+    maxWidth: 980,
+    margin: '0 auto',
+    width: '100%',
+    position: 'relative',
+    zIndex: 2,
+  }}
+>
+  <div
+    style={{
+      maxWidth: mobile ? '100%' : 600,
+    }}
+  >
 
-        {/* Eyebrow */}
-        <p style={{
-          fontFamily: '"SF Mono", Menlo, monospace',
-          fontSize: 12,
-          textTransform: 'uppercase',
-          letterSpacing: '0.14em',
-          color: '#EBCB85',
-          marginBottom: 26,
-          opacity: 0,
-          animation: 'fup 0.8s 0.3s forwards',
-        }}>
-          AI engineer · frontend developer · visual thinker
-        </p>
+    {/* Eyebrow */}
+    <p
+      style={{
+        fontFamily: '"SF Mono", Menlo, monospace',
+        fontSize: 12,
+        textTransform: 'uppercase',
+        letterSpacing: '0.14em',
+        color: '#EBCB85',
+        marginBottom: 26,
+        opacity: 0,
+        animation: 'fup 0.8s 0.3s forwards',
+      }}
+    >
+      AI engineer · frontend developer · visual thinker
+    </p>
 
         {/* Headline — 3 lines with upward clip reveal */}
         <h1 style={{
           fontFamily: 'Georgia, "Palatino Linotype", serif',
-          fontSize: 'clamp(40px, 6vw, 84px)',
+          fontSize: mobile
+  ? 'clamp(44px, 10vw, 50px)'
+  : 'clamp(40px, 6vw, 84px)',
           fontWeight: 400,
           lineHeight: 1.08,
           letterSpacing: '-0.025em',
-          marginBottom: 30,
+          marginBottom: 42,
+          maxWidth: mobile ? 420 : 720,
         }}>
           {/* Line 1 */}
           <span style={{ display: 'block', overflow: 'hidden' }}>
@@ -96,7 +127,11 @@ export default function Hero() {
               transform: 'translateY(105%)',
               animation: 'sup 0.9s cubic-bezier(0.16,1,0.3,1) 0.8s forwards',
             }}>
-              I trained the eye first.
+             <>
+  I trained the eye
+  <br />
+  first.
+</>
             </span>
           </span>
         </h1>
@@ -106,8 +141,8 @@ export default function Hero() {
           fontSize: 17,
           color: '#868172',
           maxWidth: 500,
-          lineHeight: 1.75,
-          marginBottom: 44,
+          lineHeight: 1.85,
+marginBottom: 52,
           opacity: 0,
           animation: 'fup 0.8s 1.1s forwards',
         }}>
@@ -117,18 +152,23 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons */}
-        <div style={{
-          display: 'flex', gap: 14, flexWrap: 'wrap',
-          opacity: 0,
-          animation: 'fup 0.8s 1.3s forwards',
-        }}>
+       <div style={{
+  display: 'flex',
+  flexDirection: 'row',
+  gap: 14,
+  opacity: 0,
+  animation: 'fup 0.8s 1.3s forwards',
+}}>
           {/* Primary — camera button */}
           <a
             href="#journey"
             onClick={handleCamera}
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 9,
-              padding: '13px 26px',
+              display: 'flex',
+justifyContent: 'center',
+alignItems: 'center',
+gap: 9,
+              padding: '13px 28px',
               background: '#EBCB85',
               color: '#231511',
               fontFamily: '"SF Mono", Menlo, monospace',
@@ -165,7 +205,7 @@ export default function Hero() {
             href="#contact"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 9,
-              padding: '12px 25px',
+              padding: '13px 28px',
               border: '1px solid rgba(134,129,114,0.28)',
               color: '#F8F8F0',
               fontFamily: '"SF Mono", Menlo, monospace',
@@ -188,6 +228,7 @@ export default function Hero() {
             Get in touch
           </a>
         </div>
+      </div>
       </div>
 
       {/* Scroll hint — scanning line */}

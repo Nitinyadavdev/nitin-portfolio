@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 /* ─── Reveal hook via IntersectionObserver ─── */
 function useReveal(delay = 0) {
@@ -54,13 +54,27 @@ const subHover = {
 }
 
 export default function Work() {
+    const [mobile, setMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setMobile(window.innerWidth < 768)
+
+    check()
+
+    window.addEventListener('resize', check)
+
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   const mainRef = useReveal(0)
   const sub1Ref = useReveal(120)
   const sub2Ref = useReveal(200)
+   
+  
 
   return (
     <section id="work" style={{ position: 'relative', zIndex: 2 }}>
-      <div style={{ maxWidth: 980, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1040, margin: '0 auto' }}>
 
         {/* Section label */}
         <p style={{
@@ -91,7 +105,10 @@ export default function Work() {
         {/* Work grid — 1.5fr / 1fr */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1.5fr 1fr',
+         gridTemplateColumns:
+  mobile
+    ? '1fr'
+    : '1.5fr 1fr',
           gap: 20,
         }}>
 
@@ -100,7 +117,7 @@ export default function Work() {
             ref={mainRef}
             style={{
               border: '1px solid rgba(134,129,114,0.1)',
-              padding: 32,
+              padding: mobile ? 20 : 32,
               position: 'relative',
               overflow: 'hidden',
               borderRadius: 2,
@@ -131,7 +148,7 @@ export default function Work() {
 
             <h3 style={{
               fontFamily: 'Georgia, "Palatino Linotype", serif',
-              fontSize: 19, fontWeight: 400,
+              fontSize: 21, fontWeight: 400,
               marginBottom: 10, lineHeight: 1.3,
               color: '#F8F8F0',
             }}>
