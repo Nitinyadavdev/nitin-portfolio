@@ -45,8 +45,8 @@ const particleCount = window.innerWidth < 768 ? 8 : 10
   x: Math.random() * W,
   y: Math.random() * H,
   label: rParticle(),
-  op: Math.random() * 0.45 + 0.15,
-  spd: Math.random() * 0.06 + 0.02,
+  op: Math.random() * 0.32 + 0.08,
+spd: Math.random() * 0.18 + 0.05,
   dir: Math.random() * Math.PI * 2,
 }))
 
