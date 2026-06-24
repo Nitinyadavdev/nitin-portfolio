@@ -7,6 +7,7 @@ const GRID = 80  // matches index.html exactly
 const shutters  = ['1/25','1/50','1/100','1/160','1/200','1/320','1/500','1/800','1/1000','1/1600','1/2000','1/4000']
 const apertures = ['f/1.4','f/1.8','f/2.0','f/2.8','f/3.5','f/4.0','f/5.6','f/8.0']
 const isos      = [100,160,200,320,400,640,800,1600,3200]
+const particleCount = window.innerWidth < 768 ? 8 : 10
 
 function rLat() { return (Math.random()*180-90).toFixed(5)+'°'+(Math.random()>.5?'N':'S') }
 function rLng() { return (Math.random()*360-180).toFixed(5)+'°'+(Math.random()>.5?'E':'W') }
@@ -39,14 +40,15 @@ export default function GridCanvas() {
     canvas.width = W; canvas.height = H
 
     /* 12 floating text particles — same count as HTML */
-    const floaters: Floater[] = Array.from({ length: 12 }, () => ({
-      x:   Math.random() * W,
-      y:   Math.random() * H,
-      label: rParticle(),
-      op:  Math.random() * 0.38 + 0.1,
-      spd: Math.random() * 0.22 + 0.07,
-      dir: Math.random() * Math.PI * 2,
-    }))
+     const floaters: Floater[] = Array.from({ length: particleCount }, () => ({
+  x: Math.random() * W,
+  y: Math.random() * H,
+  label: rParticle(),
+  op: Math.random() * 0.45 + 0.15,
+  spd: Math.random() * 0.06 + 0.02,
+  dir: Math.random() * Math.PI * 2,
+}))
+
 
     const onResize = () => {
       W = canvas.width  = window.innerWidth

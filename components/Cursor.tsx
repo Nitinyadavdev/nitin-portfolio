@@ -8,6 +8,10 @@ export default function Cursor() {
   const spotRef     = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+     if (window.matchMedia('(pointer: coarse)').matches) {
+    return
+  }
+
     let mx = -100, my = -100
     let rx = -100, ry = -100
     let rafId: number
