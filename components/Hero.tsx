@@ -67,7 +67,7 @@ useEffect(() => {
 >
   <div
     style={{
-      maxWidth: mobile ? '100%' : 600,
+      // maxWidth: mobile ? '100%' : 600,
     }}
   >
 
@@ -97,7 +97,7 @@ useEffect(() => {
           lineHeight: 1.08,
           letterSpacing: '-0.025em',
           marginBottom: 42,
-          maxWidth: mobile ? 420 : 720,
+          // maxWidth: mobile ? 420 : 920,
         }}>
           {/* Line 1 */}
           <span style={{ display: 'block', overflow: 'hidden' }}>
@@ -128,9 +128,8 @@ useEffect(() => {
               animation: 'sup 0.9s cubic-bezier(0.16,1,0.3,1) 0.8s forwards',
             }}>
              <>
-  I trained the eye
-  <br />
-  first.
+  I trained the eye first.
+  
 </>
             </span>
           </span>
