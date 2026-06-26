@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react'
 /* ─── Timeline steps matching index.html exactly ─── */
 const steps = [
   {
-    year: '2016',
+    year: '2013 — 2016',
     title: 'Mass Communication Graduate',
     role: 'The foundation of how I see information',
     desc: 'Graduated with a trained lens for how people consume, interpret, and respond to media. That instinct shapes every interface decision I make today.',
@@ -37,7 +37,7 @@ const steps = [
     delay: 80,
   },
   {
-    year: '2017 — 2020',
+    year: '2017 — 2021',
     title: 'Professional Photographer',
     role: 'Trained the eye under real pressure, for real clients',
     desc: "Fashion editorials, weddings, couple portraits. Instagram presence, repeat clients, live deliverables. You don't learn composition and light in theory — you learn it when someone's paying you and there's no second take on the first dance.",
@@ -53,10 +53,10 @@ const steps = [
     delay: 160,
   },
   {
-    year: '2020 — 2021',
+    year: '2021 — 2023',
     title: 'Self-taught Developer',
-    role: 'COVID as a catalyst — 1.5 years of deliberate learning',
-    desc: 'Used the lockdown to pivot intentionally. 18 months of structured self-teaching — HTML, CSS, then JavaScript. Ended with an internship offer from Incentive, a Bangalore-based startup. Not a shortcut. A commitment.',
+    role: 'COVID as a catalyst — two years of deliberate learning',
+    desc: 'Used the lockdown to pivot intentionally. Two years of structured self-teaching — HTML, CSS, then JavaScript. Not a shortcut. A commitment that led directly to a real internship and a founding-engineer role.',
     icon: (
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
         stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -64,11 +64,26 @@ const steps = [
         <path d="M16 6l5 6-5 6"/>
       </svg>
     ),
-    tags: ['HTML / CSS', 'JavaScript', 'Internship @ Incentive, Bangalore'],
+    tags: ['HTML / CSS', 'JavaScript', 'React'],
     delay: 240,
   },
   {
-    year: '2021 — 2024',
+    year: 'Feb 2023 — Apr 2023',
+    title: 'Frontend Intern — Incentiv',
+    role: 'First production code. Real users. Real stakes.',
+    desc: 'Built modular, reusable components in React.js and Tailwind CSS for a Bangalore-based startup. Integrated REST APIs, improved UI/UX workflows, and shipped features that real users interacted with. The proof of concept for the pivot.',
+    icon: (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+        stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+      </svg>
+    ),
+    tags: ['React.js', 'Tailwind CSS', 'REST APIs', 'Bengaluru'],
+    delay: 310,
+  },
+  {
+    year: 'Jun 2023 — Sep 2025',
     title: 'Founding Frontend Developer — Aakashe Innovations',
     role: 'Precision-critical GIS SaaS · drone imagery platform',
     desc: 'One of the founding engineers on a drone imagery platform. Built two applications simultaneously: a multi-tenant SaaS admin suite and a full-featured map editor where GIS professionals draw polygons, run QC, and ingest KML/KMZ data at coordinate-level accuracy. Migrated the core map renderer from OpenLayers to MapLibre + Turf + Terra Draw for performance — shipped the full MVP without losing a millimetre of precision.',
@@ -80,21 +95,22 @@ const steps = [
       </svg>
     ),
     tags: ['MapLibre', 'Turf.js', 'Terra Draw', 'OpenLayers', 'KML / KMZ', 'React', 'Multi-tenant SaaS'],
-    delay: 320,
+    delay: 380,
   },
   {
-    year: '2024 — now',
-    title: 'AI Engineering',
-    role: 'Synthesising everything that came before',
-    desc: "Certified in Claude 101 and Claude Code 101. Actively building with AI — and bringing the full stack of what came before: a trained visual eye, precision-software experience, and the ability to communicate in any room. Currently building something in stealth.",
+    year: '2025 — now',
+    title: 'AI Engineer',
+    role: 'Most AI engineers bring code. I bring taste.',
+    desc: "Years of photography, graphic design, and visual communication didn't stop mattering when the work moved into AI. That eye for what feels right — what fits a client, what fits a product, what fits the moment — is rare in this space. Whether the solution is simple or complex, I know how to make it land. That's the human touch I bring to every build.",
+    stealthNote: '↳ Co-founder · Building in stealth',
     icon: (
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
         stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
         <path d="M12 3c.6 3.4 2.6 5.4 6 6-3.4.6-5.4 2.6-6 6-.6-3.4-2.6-5.4-6-6 3.4-.6 5.4-2.6 6-6z"/>
       </svg>
     ),
-    tags: ['Claude API', 'AI product development', 'Prompt engineering', 'Stealth startup'],
-    delay: 400,
+    tags: ['Claude API', 'AI product development', 'Prompt engineering', 'LLM integration'],
+    delay: 450,
   },
 ]
 
@@ -215,6 +231,35 @@ function Step({ step, index }: { step: typeof steps[0]; index: number }) {
       }}>
         {step.desc}
       </p>
+
+      {/* Stealth note — AI Engineer step only */}
+      {step.stealthNote && (
+        <div style={{
+          marginTop: 14,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+        }}>
+          <span style={{
+            display: 'inline-block',
+            width: 6,
+            height: 6,
+            borderRadius: '50%',
+            background: '#EBCB85',
+            boxShadow: '0 0 6px rgba(235,203,133,0.7)',
+            flexShrink: 0,
+            animation: 'pulse 2.4s ease-in-out infinite',
+          }} />
+          <span style={{
+            fontFamily: '"SF Mono", Menlo, monospace',
+            fontSize: 11,
+            color: 'rgba(235,203,133,0.6)',
+            letterSpacing: '0.06em',
+          }}>
+            {step.stealthNote}
+          </span>
+        </div>
+      )}
 
       {/* EXIF metadata — photography step only */}
       {step.exif && (

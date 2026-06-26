@@ -31,7 +31,7 @@ const stats = [
   { n: '3+', label: 'years shipping production frontend software' },
   { n: '6+', label: 'years working professionally with visual tools' },
   { n: '2',  label: 'AI engineering certifications earned this year' },
-  { n: '1',  label: 'obsession: making it feel considered, not generated' },
+  { n: '1', label: 'Anyone can ship code. Feeling is what makes it memorable.' },
 ]
 
 export default function Philosophy() {
@@ -104,11 +104,7 @@ useEffect(() => {
               color: '#868172',
               lineHeight: 1.85,
             }}>
-              Most AI-generated products share the same problem: technically correct,
-              visually forgettable. I have a specific combination to offer — precision
-              engineering from years of data-critical GIS work, layered on top of a
-              trained eye from years of professional design and photography. I notice
-              when something looks templated. I&apos;m unlikely to ship it.
+              AI can build products. It can’t build taste. I bring an eye shaped by photography, design, and precision engineering — so the work doesn’t just function. It feels right.
             </p>
           </div>
 
